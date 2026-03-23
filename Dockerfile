@@ -1,8 +1,10 @@
 FROM ghcr.io/home-assistant/home-assistant:stable
 
-# Копируем наш скрипт и делаем исполняемым
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
+# Копируем конфигурацию в образ
+COPY configuration.yaml /config/configuration.yaml
 
-# Переопределяем точку входа
-ENTRYPOINT ["/entrypoint.sh"]
+# Создаём папку для персистентных данных (если том не подключён)
+RUN mkdir -p /config
+
+# Порт по умолчанию
+EXPOSE 8123
