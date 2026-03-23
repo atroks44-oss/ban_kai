@@ -1,0 +1,18 @@
+# === КРИТИЧНО: настройки для работы за прокси (Railway) ===
+http:
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - 100.64.0.0/10
+    - 172.16.0.0/12
+    - 10.0.0.0/8
+    - 127.0.0.1
+
+# === Минимальные настройки для запуска ===
+default_config:
+
+# === Логирование для отладки ===
+logger:
+  default: warning
+  logs:
+    homeassistant.components.http: debug
+    homeassistant.setup: info
